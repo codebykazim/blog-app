@@ -30,7 +30,7 @@ function App() {
       <div>
         <Header/>
         <main>
-          {/* <Outlet /> */}
+          <Outlet />
         </main>
         <Footer/>
       </div>

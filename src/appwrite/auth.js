@@ -16,7 +16,7 @@ export class AuthService{
 
     async createAccount({email,password,name}) {
         try {
-            const userAccount=await this.account.create(ID.unique, email,password,name)
+            const userAccount=await this.account.create(ID.unique(), email,password,name)
 
             if (userAccount) {
                 //call login method
@@ -42,12 +42,13 @@ export class AuthService{
 
     async getCurrentUser() {
         try {
-            return userAccount= await this.account.get();
+            return await this.account.get();
 
         } catch (error) {
             console.log('getCurrentUser error',error);
-            return null;
+
         }
+        return null;
     }
 
     async logout() {

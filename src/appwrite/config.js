@@ -131,10 +131,10 @@ export class Service {
 
     }
 
-    getfilePreview() {
+    getFilePreview(fileId) {
         return this.bucket.getFilePreview(
             conf.appwriteBucketId,
-            fileId,
+            fileId
         )
     }
 
