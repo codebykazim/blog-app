@@ -1,29 +1,29 @@
-import React, {useState, useEffect} from 'react'
-import service from '../appwrite/config'
-import {Container, PostCard } from '../components'
+import React, { useState, useEffect } from "react"
+import service from "../appwrite/config"
+import { Container, PostCard } from "../components"
 
 function AllPosts() {
-    const [posts,setPosts]= useState([]);
+  const [posts, setPosts] = useState([])
 
-    useEffect(()=>{
-        service.getAllPosts([]).then((posts)=> {
-            if (posts) {
-                setPosts(posts.documents);
-            }
-        });
-    },[])
+  useEffect(() => {
+    service.getAllPosts([]).then((posts) => {
+      if (posts) {
+        setPosts(posts.documents)
+      }
+    })
+  }, [])
 
   return (
-    <div>
-        <Container>
-            <div>
-            {posts.map((post)=>(
-                <div key={post.$id}>
-                    <PostCard {...post} />
-                </div>
-            ))}
+    <div className="min-h-screen bg-gradient-to-br from-[#DFF6F0] to-[#2C786C] py-8">
+      <Container>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {posts.map((post) => (
+            <div key={post.$id} className="bg-white shadow-lg rounded-xl overflow-hidden transition-transform transform hover:scale-105 p-6">
+              <PostCard {...post} />
             </div>
-        </Container>
+          ))}
+        </div>
+      </Container>
     </div>
   )
 }

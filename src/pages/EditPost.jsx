@@ -21,13 +21,11 @@ function EditPost() {
     },[slug, navigate])
 
   return post ? (
-    <div>
-        <Container>
-            <PostForm post={post} />
-        </Container>
-
+    <div className="min-h-screen bg-gradient-to-br from-[#A6C36F] to-[#335145] py-8">
+      <Container>
+        <PostForm post={post} />
+      </Container>
     </div>
-
   ) : null
 }
 

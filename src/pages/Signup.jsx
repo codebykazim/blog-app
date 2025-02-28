@@ -3,8 +3,8 @@ import { Signup as SignupComponent } from '../components/index'
 
 function Signup() {
   return (
-    <div>
-        <SignupComponent />
+    <div className="min-h-screen bg-gradient-to-br from-[#DFF6F0] to-[#2C786C] ">
+      <SignupComponent />
     </div>
   )
 }
