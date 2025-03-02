@@ -5,10 +5,10 @@ import conf from "../conf/conf"
 export default function RTE({ name, control, label, defaultValue = "" }) {
   return (
     <div className="mb-6">
-      {label && <label className="block mb-2 text-sm font-medium text-[#335145]">{label}</label>}
+      {label && <label className="block mb-2 text-sm font-medium text-gray-700">{label}</label>}
 
       <div
-        className="border border-[#828C51] rounded-xl overflow-hidden
+        className="border border-gray-200 rounded-xl overflow-hidden
       shadow-sm hover:shadow-md transition-shadow duration-200"
       >
         <Controller
@@ -58,3 +58,4 @@ export default function RTE({ name, control, label, defaultValue = "" }) {
     </div>
   )
 }
+

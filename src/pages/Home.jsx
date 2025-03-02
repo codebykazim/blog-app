@@ -2,39 +2,51 @@
 
 import { useEffect, useState } from "react"
 import service from "../appwrite/config"
+import authService from "../appwrite/auth"
 import { Container, PostCard } from "../components"
 import { Loader } from "lucide-react"
 
 function Home() {
   const [posts, setPosts] = useState([])
+  const [user, setUser] =useState([]);
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     service.getAllPosts().then((posts) => {
       if (posts) {
         setPosts(posts.documents)
+        console.log(posts.documents);
+
       }
       setLoading(false)
     })
   }, [])
 
+  // useEffect(()=>{
+  //   authService.getCurrentUser().then((users)=> {
+  //     if(users) {
+  //       setUser(users);
+  //       console.log(users);
+
+  //     }
+  //   })
+  // },[])
+
   if (loading) {
     return (
       <div className="w-full min-h-[60vh] flex items-center justify-center">
-        <Loader className="w-8 h-8 text-[#0F3D3E] animate-spin" />
+        <Loader className="w-8 h-8 text-purple-500 animate-spin" />
       </div>
     )
   }
 
   if (posts.length === 0) {
     return (
-      <div className="w-full py-8 mt-4 text-center">
+      <div className="w-full py-8 mt-4 text-center bg-gray-50">
         <Container>
           <div className="flex flex-wrap">
             <div className="p-2 w-full">
-              <h1 className="text-4xl font-extrabold text-[#0F3D3E]">
-                Login to read posts
-              </h1>
+              <h1 className="text-4xl font-bold text-gray-900">Login to read posts</h1>
             </div>
           </div>
         </Container>
@@ -43,15 +55,12 @@ function Home() {
   }
 
   return (
-    <div className="w-full py-8 bg-gradient-to-br from-[#F5E8C7] to-[#3C6255] min-h-screen">
+    <div className="w-full py-8 bg-gray-50">
       <Container>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post) => (
-            <div
-              key={post.$id}
-              className="bg-white shadow-lg rounded-xl overflow-hidden transition-transform transform hover:scale-[1.05] p-6 hover:shadow-2xl"
-            >
-              <PostCard {...post} />
+            <div key={post.$id}>
+              <PostCard {...post} {...user}/>
             </div>
           ))}
         </div>

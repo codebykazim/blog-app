@@ -1,37 +1,43 @@
 import { Link } from "react-router-dom"
-import { ArrowRight } from "lucide-react"
 import service from "../appwrite/config"
+import parse from "html-react-parser"
 
-function PostCard({ $id, title, featuredImage }) {
+function PostCard({ $id, title, featuredImage, content, name,date='aajn', $createdAt}) {
   return (
-    <Link to={`/post/${$id}`} className="block">
-      <div
-        className="group overflow-hidden bg-white rounded-xl
-        shadow-lg hover:shadow-xl transition-all duration-300 border border-[#828C51]"
-      >
+    <Link to={`/post/${$id}`}>
+      <div className="group space-y-4">
         {/* Image Container */}
-        <div className="w-full h-52 overflow-hidden relative">
+        <div className="aspect-[4/3] overflow-hidden rounded-xl">
           <img
-            src={service.getFilePreview(featuredImage) || "/placeholder.svg?height=208&width=400"}
+            src={service.getFilePreview(featuredImage) || "/placeholder.svg?height=300&width=400"}
             alt={title}
             className="w-full h-full object-cover transition-transform duration-300
                     group-hover:scale-105"
           />
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#335145]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
 
-        {/* Title and Subtitle Container */}
-        <div className="p-6 bg-[#F5F5F5]">
-          <h2
-            className="text-xl font-bold text-[#335145]
-            group-hover:text-[#A6C36F] transition-colors duration-200 line-clamp-2 mb-3"
-          >
+        {/* Content Container */}
+        <div className="space-y-3">
+
+          {/* Title */}
+          <h2 className="text-xl font-bold text-gray-900 line-clamp-2 group-hover:text-blue-500 transition-colors">
             {title}
           </h2>
-          <div className="flex items-center text-[#828C51] group-hover:text-[#A6C36F] transition-colors duration-200">
-            <span className="text-sm font-medium">Read Blog</span>
-            <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+
+          <div className="prose max-w-none text-gray-700">
+  {parse(content.length > 150 ? content.substring(0, 150) + "..." : content)}
+</div>
+
+
+          {/* Author Info */}
+          <div className="flex items-center space-x-3 pt-2">
+            <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
+              <img src="/placeholder.svg?height=32&width=32" alt={name} className="w-full h-full object-cover" />
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="text-sm font-medium text-gray-900">{name}</span>
+              <span className="text-sm text-gray-500">{new Date($createdAt).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}</span>
+            </div>
           </div>
         </div>
       </div>

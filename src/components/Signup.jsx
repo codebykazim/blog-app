@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from "react"
 import authService from "../appwrite/auth"
 import { Link, useNavigate } from "react-router-dom"
@@ -31,22 +33,17 @@ function Signup() {
   }
 
   return (
-    <div
-      className="flex items-center justify-center min-h-screen bg-gradient-to-br from-[#A6C36F] to-[#828C51] p-4"
-    >
-      <div
-        className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md
-      border border-[#828C51]"
-      >
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-500 to-blue-600 p-4">
+      <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
         <div className="mb-8 flex justify-center">
           <span className="inline-block w-full max-w-[140px]">
             <Logo width="100%" />
           </span>
         </div>
-        <h2 className="text-center text-2xl font-bold text-[#335145] mb-2">Create your account</h2>
-        <p className="text-center text-[#828C51] mb-8">
+        <h2 className="text-center text-2xl font-bold text-gray-900 mb-2">Create your account</h2>
+        <p className="text-center text-gray-500 mb-8">
           Already have an account?{" "}
-          <Link to="/login" className="text-[#335145] hover:text-[#828C51] font-medium">
+          <Link to="/login" className="text-blue-500 hover:text-blue-600 font-medium">
             Sign In
           </Link>
         </p>
@@ -63,7 +60,7 @@ function Signup() {
           <Input
             label="Full Name"
             placeholder="Enter your full name"
-            {...register("Name", {
+            {...register("name", {
               required: true,
             })}
           />

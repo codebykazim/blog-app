@@ -90,9 +90,9 @@ export default function PostForm({ post }) {
 
   return (
     <form onSubmit={handleSubmit(submit)} className="max-w-7xl mx-auto">
-      <div className="flex flex-wrap bg-white rounded-xl shadow-lg border border-[#828C51]">
-        <div className="w-full lg:w-2/3 p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-[#828C51]">
-          <h2 className="text-2xl font-bold mb-8 text-[#335145]">Post Details</h2>
+      <div className="flex flex-wrap bg-white rounded-xl shadow-lg border border-gray-100">
+        <div className="w-full lg:w-2/3 p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-gray-100">
+          <h2 className="text-2xl font-bold mb-8 text-gray-900">Post Details</h2>
 
           <div className="space-y-6">
             <Input label="Title" placeholder="Enter post title" {...register("title", { required: true })} />
@@ -114,13 +114,13 @@ export default function PostForm({ post }) {
 
         <div className="w-full lg:w-1/3 p-6 lg:p-8">
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-[#335145]">Publication Settings</h3>
+            <h3 className="text-xl font-semibold text-gray-900">Publication Settings</h3>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-[#335145]">Featured Image</label>
+              <label className="block text-sm font-medium text-gray-700">Featured Image</label>
               <div
-                className="border-2 border-dashed border-[#828C51] rounded-xl p-6
-              text-center hover:border-[#A6C36F] transition-colors"
+                className="border-2 border-dashed border-gray-200 rounded-xl p-6
+                text-center hover:border-blue-400 transition-colors"
               >
                 <input
                   type="file"
@@ -130,16 +130,16 @@ export default function PostForm({ post }) {
                   {...register("image", { required: !post })}
                 />
                 <label htmlFor="image-upload" className="cursor-pointer">
-                  <Upload className="w-8 h-8 mx-auto mb-3 text-[#828C51]" />
-                  <p className="text-sm text-[#828C51]">Click to upload or drag and drop</p>
-                  <p className="text-xs text-[#828C51] mt-1">PNG, JPG, JPEG or GIF (Max 2MB)</p>
+                  <Upload className="w-8 h-8 mx-auto mb-3 text-gray-400" />
+                  <p className="text-sm text-gray-500">Click to upload or drag and drop</p>
+                  <p className="text-xs text-gray-400 mt-1">PNG, JPG, JPEG or GIF (Max 2MB)</p>
                 </label>
               </div>
             </div>
 
             {post && post.featuredImage && (
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-[#335145]">Current Image</label>
+                <label className="block text-sm font-medium text-gray-700">Current Image</label>
                 <img
                   src={service.getFilePreview(post.featuredImage) || "/placeholder.svg"}
                   alt={post.title}
@@ -153,7 +153,7 @@ export default function PostForm({ post }) {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full ${post ? "bg-[#335145] hover:bg-[#828C51]" : "bg-[#A6C36F] hover:bg-[#828C51]"}`}
+              className={`w-full ${post ? "bg-purple-600 hover:bg-purple-700" : "bg-blue-500 hover:bg-blue-600"}`}
             >
               {isSubmitting ? (
                 <div className="flex items-center justify-center gap-2">

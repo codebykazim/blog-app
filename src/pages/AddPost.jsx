@@ -1,9 +1,8 @@
-import React from 'react'
-import { Container, PostForm } from '../components'
+import { Container, PostForm } from "../components"
 
 function AddPost() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#BEEF9E] to-[#1E352F] py-8">
+    <div className="w-full py-8 bg-gray-50">
       <Container>
         <PostForm />
       </Container>

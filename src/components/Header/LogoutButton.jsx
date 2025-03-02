@@ -17,10 +17,10 @@ function LogoutButton({ className = "" }) {
   return (
     <button
       onClick={logoutHandler}
-      className={`px-4 py-2 bg-[#335145] text-white rounded-lg font-medium
-      transition-all duration-200 hover:bg-[#828C51] active:scale-[0.98]
+      className={`px-5 py-2 bg-purple-500 text-white rounded-full font-medium
+      transition-all duration-200 hover:bg-purple-600 active:scale-[0.98]
       disabled:opacity-50 disabled:cursor-not-allowed
-      focus:outline-none focus:ring-2 focus:ring-[#828C51] ${className}`}
+      focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 ${className}`}
     >
       Logout
     </button>
