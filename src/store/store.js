@@ -1,6 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit'
 import authReducer from './authSlice'
-import postSlice from './postSlice'
+//import postSlice from './postSlice'
 
 const store=configureStore({
     reducer: {

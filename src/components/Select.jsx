@@ -36,4 +36,3 @@ function Select({ options, label, className, error, ...props }, ref) {
 }
 
 export default React.forwardRef(Select)
-
